@@ -6,16 +6,8 @@ load_dotenv()
 
 app = create_app()
 
-# app.app_context().push()    
-# db.drop_all()
-# db.create_all()
-
 if __name__ == "__main__":
-    host = os.getenv('HOST')
-    port = os.getenv('PORT')
+    host = os.getenv('HOST', '0.0.0.0')
+    port = os.getenv('PORT', '5000')
     print(" * Running server")
-    if not host:
-        host = '0.0.0.0'
-    if not port:
-        port = '5000'
-    socketio.run(app, debug=True, host=host, port=port)
+    socketio.run(app, host=host, port=port)
