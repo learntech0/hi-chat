@@ -1,0 +1,53 @@
+<div class="lightbox voice-call-lightbox" style="display: none;">
+    <div class="wrapper">
+        <header>
+            <div class="setting-title">
+                <i class="ri-phone-line"></i>
+                <span>Voice Call</span>
+            </div>
+        </header>
+        <div class="call-container">
+            <div class="call-content">
+                <div class="call-details">
+                    <h5></h5>
+                    <p>Calling...</p>
+                </div>
+                <div class="profile-img">
+                    <img src="{{ url_for('static', filename='images/profile/' + current_user.profile) }}">
+                </div> 
+            </div>
+
+            <div id="audio-grid" class="audio-grid" hidden></div>
+
+            <div id="control_box" class="row control-box">
+                <div class="d-flex justify-content-center align-items-center button-box">
+                    
+                    <button id="btn-mute-audio" class="btn btn-lg btn-outline-secondary rounded-circle mx-2" hidden>
+                        <span id="audio-mute-icon" class="material-icons">mic</span>
+                    </button>
+                    <button id="btn-call" class="btn btn-lg btn-success rounded-circle mx-2" hidden>
+                        <span id="call_icon" class="material-icons">call</span>                               
+                    </button>
+                    <button id="btn-end-call"class="btn btn-lg btn-danger rounded-circle mx-2">
+                        <span id="end_call_icon" class="material-icons">call_end</span>                                   
+                    </button>
+                </div>
+            </div>
+
+            <div class="local-audio-wrapper" hidden>
+                <audio id="local-audio" autoplay muted></audio>
+            </div>
+        </div>
+        
+        <!--  video -->
+
+    </div>
+</div>
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/call.css') }}">
+{% endblock style %}
+{% block script %}
+<!-- <script src="{{url_for('static', filename='js/call/audio/audio-manager.js')}}" defer></script> -->
+<script src="{{url_for('static', filename='js/call/audio/audio-ui.js')}}" defer></script>
+<script src="{{url_for('static', filename='js/call/audio/audio-networking.js')}}" defer></script>
+{% endblock script %}

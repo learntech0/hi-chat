@@ -1,0 +1,41 @@
+<form method="post">
+    {{ cform.hidden_tag() }}
+    <div class="mb-2 field input">
+        {{ cform.username.label(class="form-label") }}
+        {% if cform.username.errors %}
+            {{ cform.username(class="form-control is-invalid")}}
+            <div class="invalid-feedback">
+                {% for error in cform.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ cform.username(class="form-control") }}
+        {% endif %}
+    </div>
+    <div>
+        {{ cform.submit(class="btn btn-primary my-2 field button") }}
+    </div>
+</form>
+
+<!-- <form id="add-contact-form" method="post">
+    {% if errors %}
+    <div class="error-text my-3">
+        {% for error in errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="mb-3">
+        <label class="form-label" for="username">Enter username</label>
+        <input
+        class="form-control"
+        type="username"
+        id="username"
+        name="username"
+        placeholder="Enter user's username"
+        required
+        />
+    </div>
+    <button class="btn btn-primary" type="submit">Add</button>
+</form> -->

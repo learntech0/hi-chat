@@ -1,0 +1,15 @@
+{% extends 'auth-layout.html' %}
+{% block content %}
+<script type="text/javascript">
+    Swal.fire({
+        title: "{{ _title }}",
+        text: "{{ text }}",
+        icon: "{{ icon }}",
+        showConfirmButton: false
+    });
+
+    setTimeout(function(){
+        window.location.href = "{{ url_for('auth_view.login') }}";
+    }, 5000);
+</script>
+{% endblock content %}

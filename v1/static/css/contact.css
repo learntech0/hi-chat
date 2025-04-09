@@ -1,0 +1,26 @@
+/* .new-contact {
+    position: fixed;
+    left: 60px;
+    bottom: 24px;
+    width: 40px;
+    height: 40px;
+    font-size: 23px;
+    cursor: pointer;
+    background-color: #a8a0a0;
+    border-radius: 50%;
+} */
+.new-contact {
+    position: fixed;
+    left: 60px;
+    bottom: 24px;
+}
+/* .new-contact i {
+    margin-left: 8px;
+} */
+@media screen and (max-width: 767px) {
+    .new-contact {
+        left: auto;
+        right: 30px;
+        bottom: 60px;
+    }   
+}

@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock style %}
+{% block content %}
+    <!-- start: Chat -->
+    <section class="chat-section">
+        <div class="chat-container">
+            {% include '_partials/sidebar.html' %}
+            <!-- start: Content -->
+            <div class="chat-content">
+                <!-- start: Content side -->
+                <div class="content-sidebar">
+                    <div class="content-sidebar-title">Chats</div>
+                    <form class="content-sidebar-form" style="display: none;">
+                        <input type="search" class="content-sidebar-input" placeholder="Search..." id="searchInput">
+                        <button type="button" class="content-sidebar-submit" id="searchButton"><i class="ri-search-line"></i></button>
+                    </form>
+                    <div class="content-messages">
+                        <ul class="content-messages-list" id="contacts-container">
+                            <!-- <li class="content-message-title"><span>Recent</span></li>                       -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- end: Content side -->
+                <!-- start: Conversation -->
+                
+                {% if contact %}            
+                <div class="conversation">
+                    <div class="conversation-top">
+                        <a href="{{ url_for('chat_view.user') }}"><button type="button" class="conversation-back"><i class="ri-arrow-left-line"></i></button></a>
+                        <div class="conversation-user">
+                            <img class="conversation-user-image" src="{{ url_for('static', filename='images/profile/' + contact.profile) }}" alt="">
+                            <div>
+                                <div class="conversation-user-name">{{ contact.username }}</div>
+                                <div class="conversation-user-status online">{{status}}</div>
+                            </div>
+                        </div>
+                        <div class="conversation-buttons">
+                            <button type="button" id="voice-call"><i class="ri-phone-fill"></i></button>
+                            <!-- <button type="button" id="video-call"><i class="ri-vidicon-line"></i></button> -->
+                            <button type="button"><i class="ri-information-line"></i></button>
+                        </div>
+                    </div>
+                    <div class="conversation-main">
+                        <ul class="conversation-wrapper" id="messages-container"></ul>                        
+                    </div>
+                    <form method="post" class="conversation-form" id="chatForm">
+                        <button type="button" class="conversation-form-button emoji-picker"><i class="ri-emotion-line"></i></button>
+                        <div class="conversation-attachment">
+                            <button type="button" class="conversation-form-button conversation-attachment-toggle"><i class="ri-attachment-2"></i></button>
+                            <ul class="conversation-attachment-dropdown">
+                                <input type="file" name="file" hidden>
+                                <!-- <li><i class="ri-image-line"></i>Attach image</li> -->
+                                <li><i class="ri-file-2-line"></i></i>Attach file</li>
+                            </ul>
+                        </div>
+                        <div class="conversation-form-group">
+                            <textarea class="conversation-form-input" id="msg" name="msg" rows="1" placeholder="Type here..." required></textarea>
+                            <button type="button" class="conversation-form-record"><i class="ri-mic-line"></i></button>
+                            <button type="button" class="conversation-form-submit" onclick="submitForm()"><i class="ri-send-plane-2-line"></i></button>
+                        </div>
+                    </form>
+                </div>
+                {% else %}
+                <div class="conversation conversation-default">
+                    <i class="ri-chat-3-line"></i>
+                    <h3>Say Hii Chat App</h3>
+                    <p>Select contact to view details!</p>  
+                    <p>Your contact information appear here.</p>           
+                </div>
+                <div class="conversation conversation-default sm">
+                    <i class="ri-chat-3-line"></i>
+                    <h3>Say Hii Chat App</h3>
+                    <p>No contact selected!</p>  
+                    <p>Your contact information appear here.</p> 
+                </div>
+                {% endif %}
+                <!-- end: Conversation -->
+            </div>
+            <!-- end: Content -->
+        </div>
+    </section>
+{% endblock content %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/contact/contact_list.js') }}"></script>
+<script src="{{ url_for('static', filename='js/contact/contact.js') }}"></script>
+{% endblock script %}

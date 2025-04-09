@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/users.css') }}">
+{% endblock style %}
+{% block content %}
+<!-- start: Chat -->
+<section class="chat-section">
+    <div class="chat-container">
+        {% include '_partials/sidebar.html' %}
+        <!-- start: Content -->
+        <div class="chat-content">
+            <!-- start: Content side -->
+            <div class="content-sidebar">
+                <div class="content-sidebar-title">Contacts</div>
+                <!-- <button class="new-contact" id="new-contact"><i class="ri-contacts-line"></i></button> -->
+                <button id="new-contact" class="new-button btn btn-lg btn-outline-secondary rounded-circle" data-bs-toggle="modal" data-bs-target="#add-contact-modal">
+                    <i class="ri-contacts-line"></i>
+                </button>
+                <form class="content-sidebar-form" style="display: none;">
+                    <input type="search" class="content-sidebar-input" placeholder="Search..." id="searchInput">
+                    <button type="button" class="content-sidebar-submit" id="searchButton"><i
+                            class="ri-search-line"></i></button>
+                </form>
+                <div class="content-messages">
+                    <ul class="content-messages-list" id="contacts-container">
+
+                    </ul>
+                </div>
+            </div>
+            <!-- end: Content side -->
+            <!-- start: Conversation -->
+            <div class="conversation conversation-default">
+                <i class="ri-chat-3-line"></i>
+                <h3>Say Hii Chat App</h3>
+                <p>Select contact to view details!</p>  
+                <p>Your contact information appear here.</p>           
+            </div>
+            <!-- end: Conversation -->
+        </div>
+        <!-- end: Content -->
+    </div>
+</section>
+<!-- end: Chat -->
+
+<!-- Modal -->
+<div class="modal fade" id="add-contact-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Contact</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% include 'includes/add_contact_form.html' %}
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script src="{{ url_for('static', filename='js/contact/contact_list.js') }}"></script>
+{% endblock script %}
+  

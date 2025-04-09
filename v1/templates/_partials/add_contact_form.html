@@ -1,0 +1,19 @@
+<form method="post">
+    {{ cform.hidden_tag() }}
+    <div class="mb-2 field input">
+        {{ cform.username.label(class="form-label") }}
+        {% if cform.username.errors %}
+            {{ cform.username(class="form-control is-invalid")}}
+            <div class="invalid-feedback">
+                {% for error in cform.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ cform.username(class="form-control") }}
+        {% endif %}
+    </div>
+    <div>
+        {{ cform.submit(class="btn btn-primary my-2 field button") }}
+    </div>
+</form>

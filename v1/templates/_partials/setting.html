@@ -1,0 +1,155 @@
+<div class="lightbox setting-lightbox">
+    <div class="wrapper">
+        <header>
+            <div class="setting-title">
+                <i class="ri-settings-4-line"></i>
+                <span>Setting</span>
+            </div>
+            <div class="buttons">
+                <i class="ri-close-line" onclick="hideLightBox()"></i>
+            </div>
+        </header>
+        <div class="setting-content">
+            <aside class="setting-sidebar">
+                <ul class="setting-sidebar-menu">     
+                    <li data-toggle="#profile"><i class="ri-user-line"></i><span>Profile</span></li>
+                    <li data-toggle="#account"><i class="ri-user-settings-line"></i><span>Account</span></li>
+                    <!-- <li><i class="ri-account-circle-line"></i><span>Account</span></li> -->
+                    <li data-toggle="#update-account"><i class="ri-settings-4-line"></i><span>Setting</span></li>
+                </ul>
+            </aside>
+            <div class="setting-preview">
+                <div class="setting active" id="profile">
+                    <div class="profile-img">
+                        <input type="file" hidden="hidden">
+                        <img src="{{ url_for('static', filename='images/profile/' + current_user.profile) }}" alt="user-profile">
+                    </div>
+                    <div class="update-img">
+                        <div class="row">
+                            <div class="col edit-rofile">
+                                <button class="btn btn-secondary waves-effect btn-label waves-light mt-2 p-1"><i class="ri-pencil-fill pe-1"></i>Edit</button>
+                            </div>
+                            <div class="col delete-rofile">
+                                <button class="btn btn-secondary waves-effect btn-label waves-light mt-2 p-1"><i class="ri-delete-bin-5-line pe-1"></i>Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-details">
+                        <p class="username">{{ current_user.name }}</p>
+                        <!-- <p class="name">{{ current_user.fname }} {{ current_user.lname }}</p> -->
+                        <p class="email">{{ current_user.email }}</p>
+                    </div>
+                </div>
+                <div class="setting" id="account">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Account Information</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-nowrap mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Name:</th>
+                                                <td>{{ current_user.name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Email:</th>
+                                                <td>{{ current_user.email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Username:</th>
+                                                <td>{{ current_user.username }}</td>
+                                            </tr>                               
+                                            <tr>
+                                                <th scope="row">Registration Date:</th>
+                                                <td>{{ current_user.reg_date() }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Account Status:</th>
+                                                <td>Active</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Account Verified:</th>
+                                                <td>Yes</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting" id="update-account">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Update Account</h5>
+                
+                                <form method="post">       
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="email">Email</label>
+                                                <input 
+                                                class="form-control" 
+                                                id="email" 
+                                                name="email" 
+                                                required 
+                                                type="text" 
+                                                value="{{ current_user.email }}"
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="username">Username</label>
+                                                <input 
+                                                class="form-control" 
+                                                id="username" 
+                                                maxlength="20" 
+                                                minlength="2" 
+                                                name="username" 
+                                                required 
+                                                type="text" 
+                                                value="{{ current_user.username }}"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                    <div>
+                                        <button class="btn btn-success w-md" name="submit" type="submit">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- end card body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="profileDisplay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Profile</h1>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                <div class="image-container">
+                    <img src="" alt="profile">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitProfile()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% block script %}
+<script src="{{url_for('static', filename='js/setting/setting.js')}}" defer></script>
+{% endblock script %}

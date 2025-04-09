@@ -1,0 +1,70 @@
+<div class="lightbox video-call-lightbox" style="display: none;">
+    <div class="wrapper">
+        <header>
+            <div class="setting-title">
+                <i class="ri-phone-line"></i>
+                <span>Video Call</span>
+            </div>
+        </header>
+        <div class="call-container">
+            <div class="call-content">
+                <div class="call-details">
+                    <h5></h5>
+                    <p>Calling...</p>
+                </div>
+                <div class="profile-img">
+                    <img src="{{ url_for('static', filename='images/profile/' + current_user.profile) }}">
+                </div> 
+            </div>
+
+            <!--  audio -->
+
+        </div>
+
+        <div class="video-container">
+            <div id="video-grid" class="video-grid" hidden></div>
+    
+            <div id="control_box" class="row control-box">
+                <div class="d-flex justify-content-center align-items-center button-box">
+                    
+                    <button id="btn-mute-audio" class="btn btn-lg btn-outline-secondary rounded-circle mx-2" hidden>
+                        <span id="audio-mute-icon" class="material-icons">mic</span>
+                    </button>
+                    <button id="btn-mute-video"class="btn btn-lg btn-outline-secondary rounded-circle mx-2" hidden>
+                        <span id="video-mute-icon" class="material-icons">videocam</span>                                                      
+                    </button>
+                    <button id="btn-call" class="btn btn-lg btn-success rounded-circle mx-2" hidden>
+                        <span id="call_icon" class="material-icons">call</span>                               
+                    </button>
+                    <button id="btn-end-call"class="btn btn-lg btn-danger rounded-circle mx-2">
+                        <span id="end_call_icon" class="material-icons">call_end</span>                                   
+                    </button>
+                </div>
+            </div>
+            <div class="local-video-wrapper" hidden>
+                <video id="local-video" autoplay muted></video>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/call.css') }}">
+{% endblock style %}
+{% block script %}
+<script src="{{url_for('static', filename='js/call/video/video-ui.js')}}" defer></script>
+<script src="{{url_for('static', filename='js/call/video/video-networking.js')}}" defer></script>
+<script src="{{url_for('static', filename='js/call/video/video-manager.js')}}" defer></script>
+{% endblock script %}
+
+<!-- <div id="video-grid" class="video-grid" hidden>
+    <div id="div_uid" class="shadow video-item">
+        <div class="vid-wrapper">
+            <video id="div_uid" controls>
+                <source src="{{url_for('static', filename='js/call/video/test-video.mp4')}}" type="video/mp4">
+            </video>
+        </div>
+        <div class="display-name"></div>
+    </div>
+</div> -->
+

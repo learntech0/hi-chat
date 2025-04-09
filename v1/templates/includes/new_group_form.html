@@ -1,0 +1,45 @@
+
+<form id="new-group-form" method="post">
+    {% if errors %}
+    <div class="error-text my-3">
+        {% for error in errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="mb-3">
+        <label class="form-label" for="groupname">Group Name</label>
+        <input
+        class="form-control"
+        type="text"
+        id="groupname"
+        name="groupname"
+        placeholder="Enter Group Name"
+        required
+        />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="description">Group Description</label>
+        <input
+        class="form-control"
+        type="text"
+        id="description"
+        name="description"
+        placeholder="Enter Group Description"
+        required
+        />
+    </div>
+    <!-- <div class="row mb-3">
+        <label class="form-label" for="members">Add Members</label>
+        <div class="col">
+            <select class="form-select" name="members" id="members">
+                <option value="0" selected disabled>-add member [from contacts]-</option>
+                <option value="0">option</option>
+            </select>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+    </div> -->
+    <button class="btn btn-primary" type="submit">Create</button>
+</form>

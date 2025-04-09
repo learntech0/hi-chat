@@ -1,0 +1,44 @@
+/* start: Breakpoints */
+@media screen and (max-width: 767px) {
+    .conversation-top,
+    .conversation-form {
+        padding-left: 8px;
+    }
+    .conversation,
+    .chat-content {
+        padding-left: unset;
+    }
+    .content-sidebar {
+        display: none;
+    }
+    .chat-sidebar {
+        display: none;
+    }
+    .chat-content {
+        position: relative;
+        height: 100%;
+    }
+    /* .conversation {
+        display: block;
+        position: relative;
+    } */
+    .conversation-back {
+        display: flex;
+    }
+    .conversation-default {
+        display: none;
+        padding: 8px;
+    }
+    .conversation-default i {
+        font-size: 34px;
+    }
+    .conversation-default h3 {
+        margin-bottom: 8px;
+    }
+}
+@media screen and (max-width: 575px) {
+    .emoji-picker {
+        display: none;
+    }
+}
+/* end: Breakpoints */
