@@ -143,7 +143,7 @@ def send_reset_email(user):
 def send_verification_email(user_id, email):
     token = get_token(user_id)
     message = Message('Email Verification', recipients=[email])                  
-    message.body = f'''SayHii account was registered with this email. Ignore this message if this was not you. 
+    message.body = f'''HiChat account was registered with this email. Ignore this message if this was not you. 
 
 To verify your account visit: {url_for('auth_view.verify_email', token=token, _external=True)}
 '''
