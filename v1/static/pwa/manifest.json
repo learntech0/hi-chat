@@ -1,7 +1,7 @@
 {
-  "name": "Say Hii",
-  "short_name": "Say Hii",
-  "description": "Say Hii Chat App",
+  "name": "HiChat",
+  "short_name": "HiChat",
+  "description": "HiChat Chat App",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
