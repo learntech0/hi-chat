@@ -31,7 +31,7 @@ class GroupSchema(Schema):
     profile = fields.Str()
     latest_chat = fields.Nested(LatestChatSchema, allow_none=True)
 
-    @post_dump(pass_many=True)
+    @post_dump()
     def add_latest_chat_to_groups(self, data, many, **kwargs):
         if many:
             for group_data in data:
